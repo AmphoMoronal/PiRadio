@@ -1,0 +1,78 @@
+<MDRaisedButton>:
+    font_size: 150
+    size_hint: 0.15, 0.5
+
+RelativeLayout:
+    MDRaisedButton:
+        id: previous
+        text: "<"
+        pos_hint: {"x": .1, "center_y":0.5}
+        md_bg_color: "#2f3542"
+        on_release: app.prev_channel()
+
+
+    MDRaisedButton:
+        id: next
+        text:">"
+        pos_hint: {"x": .75, "center_y": 0.5}
+        md_bg_color: "#2f3542"
+        on_release: app.next_channel()
+
+
+    MDRaisedButton:
+        id: radio_icon_btn
+        size_hint: 0.3, 0.5
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+        md_bg_color: "#ffffff"
+        on_release: app.stream()
+        Image:
+            id: radio_icon
+            source: ""
+
+
+    MDRaisedButton:
+        id: time_label
+        text: ""
+        size_hint: 0.3, 0.1
+        pos_hint: {"center_x": 0.5, "center_y": .85}
+        font_size: 30
+
+
+    MDRectangleFlatButton:
+        id: mute
+        text: "Mute"
+        size_hint: 0.1, 0.1
+        pos_hint: {"center_x": 0.5, "center_y": .18}
+        line_color: "#a4b0be"
+        md_bg_color: "#dfe4ea"
+        text_color: "#000000"
+        on_release: app.mute()
+
+    MDSlider:
+        id: volume_slider
+        min: 0
+        max: 100
+        step: 1
+        size_hint: 0.7, 0.17
+        pos_hint: {"center_x": 0.5, "center_y": 0.05}
+        hint_bg_color: "#ffffff"
+        hint_radius: [6, 0, 6, 0]
+        thumb_color_active: "black"
+        track_color_inactive: "#2f3542"
+        on_value: app.change_volume(*args)
+
+    MDRaisedButton:
+        id: increase_volume
+        text: "+"
+        size_hint: 0.12, 0.12
+        pos_hint: {"center_x": 0.93, "center_y": .08}
+        font_size: 40
+        on_release: app.volume_up()
+
+    MDRaisedButton:
+        id: decrease_volume
+        text: "-"
+        size_hint: 0.12, 0.12
+        pos_hint: {"center_x": 0.07, "center_y": .08}
+        font_size: 50
+        on_release: app.volume_down()
