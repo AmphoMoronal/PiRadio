@@ -29,7 +29,7 @@ class RadioApp(MDApp):
 
     # some variables
     p = None
-    default_volume = 0  # sets the Default Volume when you start the program
+    default_volume = 50  # sets the Default Volume when you start the program
     muted = True        # defines if the radio starts muted or not
     channel = 0
     icon = 0
@@ -84,7 +84,6 @@ class RadioApp(MDApp):
             self.root.ids.volume_slider.disabled = True
 
         elif self.muted:
-            self.stream()
             volume.set_volume(self.root.ids.volume_slider.value)
             self.muted = False
             self.root.ids.volume_slider.disabled = False
@@ -93,6 +92,8 @@ class RadioApp(MDApp):
     def stream(self):
         self.check_internet()
         if self.internet:
+            if self.muted:
+                self.mute()
             if not self.play:
                 radio_manager.play(self.channel)
                 self.play = True
