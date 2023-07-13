@@ -1,4 +1,4 @@
-# Radio
+# PiRadio
 This radio is programmed for raspberry pis and only work completly on linux based systems
 
 ## Installation
